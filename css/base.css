@@ -1,0 +1,165 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    background-color: #eee;
+    margin: 0;
+}
+
+core-scroll-header-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #eee;
+}
+
+/* background for toolbar when it is at its full size */
+core-scroll-header-panel::shadow #headerBg {
+    background-image: url(../images/masthead.jpg);
+}
+
+/* background for toolbar when it is condensed */
+core-scroll-header-panel::shadow #condensedHeaderBg {
+    background-color: #3F51B5;
+}
+
+core-toolbar {
+    color: #f1f1f1;
+    fill: #f1f1f1;
+    background-color: transparent;
+}
+
+/* Paper tabs */
+paper-tabs {
+    background-color: #4CAF50;
+}
+
+paper-tabs::shadow #selectionBar {
+  background-color: #FF5722;
+}
+
+paper-tab::shadow #ink {
+    color: #bcbcba;
+}
+
+.title {
+    -webkit-transform-origin: 0;
+    transform-origin: 0;
+    font-size: 40px;
+}
+
+/* Content */
+.content {
+    font: 400 22px/1.5 "Helvetica Neue", Helvetica, sans-serif;
+    letter-spacing: 0.01rem;    
+    padding: 8px;
+}
+
+/* Paper fab */
+paper-fab.blue {
+    background: #5677fc;
+}
+
+paper-fab.green {
+    background: #4CAF50;
+}
+
+/* 
+ * Blockquote 
+ * Style inspired by http://tympanus.net/Tutorials/ModernBlockQuoteStyles/index3.html
+ * 
+*/
+body {
+	background: #ddd url(../images/strange_bullseyes.jpg) repeat top left;
+}
+
+.quote-wrapper {
+    position: relative;
+	width: 500px;
+    max-width: 95%;
+}
+
+.quote-wrapper paper-fab {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+}
+
+.quote-wrapper blockquote {
+	background: #fff;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 
+		inset 0 2px 0 #3F51B5,
+		-5px -4px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.quote-wrapper blockquote:after, 
+.quote-wrapper blockquote:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.quote-wrapper blockquote:after {
+	border-top-color: #fff;
+	border-width: 10px;
+	left: 65%;
+	margin-left: -10px;
+}
+
+.quote-wrapper blockquote:before {
+	border-top-color: rgba(0,0,0,0.01);
+	border-width: 11px;
+	left: 65%;
+	margin-left: -11px;
+}
+
+.quote-wrapper blockquote p {
+	font-family: 'Alegreya', serif;
+	font-size: 24px;
+	color: #b4b4b4;
+	font-weight: 400;
+	line-height: 40px;
+	font-style: italic;
+	text-indent: 100px;
+	position: relative;
+    margin: 0;
+}
+
+.quote-wrapper blockquote p:before{
+	content: '\201C';
+	font-family: serif;
+	font-style: normal;
+	font-weight: 700;
+	position: absolute;
+	font-size: 175px;
+	top: 0px;
+	left: -105px;
+	color: #3F51B5;
+	text-shadow: 7px 14px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quote-wrapper .mb-attribution {
+	text-align: right;
+	padding: 0px 100px 20px 20px;
+	position: relative;
+}
+
+.quote-wrapper cite a {
+	font-weight: 700;
+	font-style: italic;
+	color: #fff;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    text-decoration: none;
+}
