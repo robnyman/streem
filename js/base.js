@@ -9,25 +9,35 @@ addEventListener('core-header-transform', function(e) {
 });
 
 // Tab navigation
-var mainNav = document.querySelector("#main-nav"),
-    contentPages = document.querySelector("#content-pages");
-if (mainNav && contentPages) {
-    mainNav.addEventListener("core-select", function () {
-        contentPages.selected = this.selected;
-    });
-}
+// var mainNav = document.querySelector("#main-nav"),
+//     contentPages = document.querySelector("#content-pages");
+// if (mainNav && contentPages) {
+//     mainNav.addEventListener("core-select", function () {
+//         // alert(contentPages.selected);
+//         contentPages.selected = this.selected;
+//     });
+// }
 
-// Quotes navigation
-var quotes = document.querySelector("#quotes"),
-    quoteNav = quotes.querySelectorAll("paper-fab"),
-    quotesLength = quoteNav.length - 1;
-// alert(quotes + ", " + quoteNav);
-for (var i = 0, l = quoteNav.length, nextItem, selectedQuoteNext; i < l; i ++) {
-    quoteNav[i].addEventListener("click", function () {
-        selectedQuoteNext = parseInt(quotes.selected, 10) + 1;
-        nextItem = (selectedQuoteNext > quotesLength)? 0 : selectedQuoteNext;
-        //alert(quotesLength + ", " + nextItem);
-        quotes.selected = nextItem;
-    });
-}
+// Quotes navigation - takes core-animated-pages first transition into account
+setTimeout(function () {
+    var quotes = document.querySelectorAll(".quote-wrapper"),
+    quotesNav = document.querySelector("#quotes-nav"),
+    quotesNavSelectedIndex = 0;
 
+    if (quotesNav) {
+        quotesNav.addEventListener("click", function () {
+            quotes[quotesNavSelectedIndex].classList.remove("selected");
+            quotesNavSelectedIndex = (quotesNavSelectedIndex >= quotes.length - 1)? 0 : ++quotesNavSelectedIndex;
+            quotes[quotesNavSelectedIndex].classList.add("selected");
+        });
+    }
+}, 1000);
+
+// Get page template reference
+var template = document.querySelector('template[is="auto-binding"]');
+
+// Add start default route
+template.addEventListener("template-bound", function(e) {
+    // Use URL hash for initial route. Otherwise, use the first page.
+    this.route = this.route || "home";
+});
