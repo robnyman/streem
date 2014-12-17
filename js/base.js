@@ -1,4 +1,4 @@
-// custom transformation: scale header's title
+// Custom transformation: scale header's title
 var titleStyle = document.querySelector('.title').style;
 addEventListener('core-header-transform', function(e) {
     var d = e.detail;
@@ -8,15 +8,16 @@ addEventListener('core-header-transform', function(e) {
     'scale(' + scale + ') translateZ(0)';
 });
 
-// Tab navigation
-// var mainNav = document.querySelector("#main-nav"),
-//     contentPages = document.querySelector("#content-pages");
-// if (mainNav && contentPages) {
-//     mainNav.addEventListener("core-select", function () {
-//         // alert(contentPages.selected);
-//         contentPages.selected = this.selected;
-//     });
-// }
+// Tab navigation - alternate version if <template is="auto-binding"> isn't used
+/*
+var mainNav = document.querySelector("#main-nav"),
+    contentPages = document.querySelector("#content-pages");
+if (mainNav && contentPages) {
+    mainNav.addEventListener("core-select", function () {
+        contentPages.selected = this.selected;
+    });
+}
+*/
 
 // Quotes navigation - takes core-animated-pages first transition into account
 setTimeout(function () {
@@ -37,7 +38,9 @@ setTimeout(function () {
 var template = document.querySelector('template[is="auto-binding"]');
 
 // Add start default route
-template.addEventListener("template-bound", function(e) {
-    // Use URL hash for initial route. Otherwise, use the first page.
-    this.route = this.route || "home";
-});
+if (template) {
+    template.addEventListener("template-bound", function(e) {
+        // Use URL hash for initial route. Otherwise, use the first page.
+        this.route = this.route || "home";
+    });
+}
