@@ -29,7 +29,7 @@
     <link rel="import" href="bower_components/paper-item/paper-item.html">
 
     <!-- Flatiron-director -->
-    <link rel="import" href="flatiron-director/flatiron-director.html">
+    <link rel="import" href="bower_components/flatiron-director/flatiron-director.html">
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/base.css" shim-shadowdom>
@@ -53,9 +53,9 @@
             <flatiron-director route="{{route}}" autoHash></flatiron-director>
 
             <paper-tabs id="main-nav" class="bottom fit" valueattr="hash" selected="{{route}}">
-                <paper-tab hash="home">Virtual water footprint</paper-tab>
-                <paper-tab hash="water">Water types & cost</paper-tab>
-                <paper-tab hash="help-organizations">Help organizations</paper-tab>
+                <template repeat="{{page in pages}}">
+                    <paper-tab hash="{{page.hash}}">{{page.name}}</paper-tab>
+                </template>
             </paper-tabs>
 
             <div class="main-content">
